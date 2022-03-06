@@ -15,7 +15,7 @@ public class BlobTriggeredFunction {
      */
     @FunctionName("blob-triggered-function")
     @StorageAccount("AzureWebJobsStorage")
-    public void run(
+    public void blobTrigger(
             @BlobTrigger(name = "content", path = "some-blob-location/{name}", dataType = "binary") byte[] content,
             @BindingName("name") String name,
             final ExecutionContext context) {

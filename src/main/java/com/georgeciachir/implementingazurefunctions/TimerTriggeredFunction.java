@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class TimerTriggeredFunction {
 
     @FunctionName("timer-function")
-    public void firstHttpTrigger(
+    public void timerTrigger(
             @TimerTrigger(name = "timerInfo", schedule = "*/10 * * * * *") String timerInfo,
             ExecutionContext context) throws Exception {
         context.getLogger().info("Sending request executed at: " + LocalDateTime.now());
