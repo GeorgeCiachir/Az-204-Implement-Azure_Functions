@@ -16,6 +16,7 @@ public class TimerTriggeredFunction {
             @TimerTrigger(name = "timerTrigger", schedule = "*/10 * * * * *") String timerInfo,
             ExecutionContext context) throws Exception {
         context.getLogger().info("Sending request executed at: " + LocalDateTime.now());
+        context.getLogger().info("TimerInfo: " + timerInfo);
 
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
