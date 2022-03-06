@@ -17,7 +17,7 @@ public class HttpTriggeredFunctions {
     /**
      * curl "{your host}/api/greeting-function-one?name={your_name_here}"
      */
-    @FunctionName("greeting-function-one")
+    @FunctionName("http-greeting-function-one")
     public HttpResponseMessage firstHttpTrigger(
             @HttpTrigger(name = "request", methods = GET, authLevel = ANONYMOUS) HttpRequestMessage<Optional<String>> request,
             ExecutionContext context) {
@@ -27,7 +27,7 @@ public class HttpTriggeredFunctions {
     /**
      * curl "{your host}/api/greeting-function-one?name={your_name_here}"
      */
-    @FunctionName("greeting-function-two")
+    @FunctionName("http-greeting-function-two")
     public HttpResponseMessage secondHttpTrigger(
             @HttpTrigger(name = "request", methods = GET, authLevel = ANONYMOUS) HttpRequestMessage<Optional<String>> request,
             ExecutionContext context) {
