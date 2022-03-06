@@ -16,21 +16,20 @@ import static com.microsoft.azure.functions.annotation.AuthorizationLevel.ANONYM
 /**
  * Azure Functions with HTTP Trigger.
  */
-public class Function {
+public class FirstGreetingFunction {
 
     private static final Logger LOG = Logger.getLogger("Function");
 
     /**
-     * This function listens at endpoint "/api/greeting-function". Two ways to invoke it using "curl" command in bash:
-     * curl "{your host}/api/greeting-function?name={your_name_here}"
+     * This function listens at endpoint "/api/greeting-function-one". Two ways to invoke it using "curl" command in bash:
+     * curl "{your host}/api/greeting-function-one?name={your_name_here}"
      */
-    @FunctionName("greeting-function")
+    @FunctionName("greeting-function-one")
     public HttpResponseMessage run(
             @HttpTrigger(name = "req", methods = GET, authLevel = ANONYMOUS) HttpRequestMessage<Optional<String>> request,
             ExecutionContext context) {
         String name = request.getQueryParameters().get("name");
-        context.getLogger().info("Logging with the context logger. Greeting [{" + name + "}]");
-        LOG.info("Logging with the manually created logger. Greeting [{" + name + "}]");
+        context.getLogger().info("Logging with the context logger. Greeting [" + name + "]");
 
         if (name == null) {
             return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
