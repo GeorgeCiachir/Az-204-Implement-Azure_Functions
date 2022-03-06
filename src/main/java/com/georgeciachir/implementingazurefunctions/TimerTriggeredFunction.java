@@ -13,7 +13,7 @@ public class TimerTriggeredFunction {
 
     @FunctionName("timer-function")
     public void firstHttpTrigger(
-            @TimerTrigger(name = "timerTrigger", schedule = "*/10 * * * * *") String timerInfo,
+            @TimerTrigger(name = "timerInfo", schedule = "*/10 * * * * *") String timerInfo,
             ExecutionContext context) throws Exception {
         context.getLogger().info("Sending request executed at: " + LocalDateTime.now());
         context.getLogger().info("TimerInfo: " + timerInfo);
