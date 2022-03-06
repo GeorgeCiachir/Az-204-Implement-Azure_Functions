@@ -35,7 +35,7 @@ public class Function {
 
         if (name == null) {
             return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
-                    .body("Please pass a name on the query string").build();
+                    .body("Please pass a name on the query string !").build();
         } else {
             return request.createResponseBuilder(HttpStatus.OK)
                     .body("Hello, " + name + " !").build();
