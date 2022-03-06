@@ -33,4 +33,20 @@ public class FirstGreetingFunction {
                     .body("Hello, " + name + " !").build();
         }
     }
+
+    @FunctionName("greeting-function-another")
+    public HttpResponseMessage second(
+            @HttpTrigger(name = "req", methods = GET, authLevel = ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            ExecutionContext context) {
+        String name = request.getQueryParameters().get("name");
+        context.getLogger().info("Greeting [" + name + "]");
+
+        if (name == null) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                    .body("Please pass a name on the query string !").build();
+        } else {
+            return request.createResponseBuilder(HttpStatus.OK)
+                    .body("Hello, " + name + " !").build();
+        }
+    }
 }
