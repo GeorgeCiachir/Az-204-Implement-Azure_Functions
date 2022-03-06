@@ -19,7 +19,7 @@ public class HttpTriggeredFunctions {
      */
     @FunctionName("greeting-function-one")
     public HttpResponseMessage firstHttpTrigger(
-            @HttpTrigger(name = "requestTrigger1", methods = GET, authLevel = ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            @HttpTrigger(name = "request", methods = GET, authLevel = ANONYMOUS) HttpRequestMessage<Optional<String>> request,
             ExecutionContext context) {
         return constructGreetingMessage(request, context);
     }
@@ -29,7 +29,7 @@ public class HttpTriggeredFunctions {
      */
     @FunctionName("greeting-function-two")
     public HttpResponseMessage secondHttpTrigger(
-            @HttpTrigger(name = "requestTrigger1", methods = GET, authLevel = ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            @HttpTrigger(name = "request", methods = GET, authLevel = ANONYMOUS) HttpRequestMessage<Optional<String>> request,
             ExecutionContext context) {
         return constructGreetingMessage(request, context);
     }
