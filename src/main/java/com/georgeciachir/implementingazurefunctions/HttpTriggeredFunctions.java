@@ -12,16 +12,29 @@ import java.util.Optional;
 import static com.microsoft.azure.functions.HttpMethod.GET;
 import static com.microsoft.azure.functions.annotation.AuthorizationLevel.ANONYMOUS;
 
-public class SecondGreetingFunction {
+public class HttpTriggeredFunctions {
 
     /**
-     * This function listens at endpoint "/api/greeting-function-two". Two ways to invoke it using "curl" command in bash:
-     * curl "{your host}/api/greeting-function-two?name={your_name_here}"
+     * curl "{your host}/api/greeting-function-one?name={your_name_here}"
+     */
+    @FunctionName("greeting-function-one")
+    public HttpResponseMessage firstHttpTrigger(
+            @HttpTrigger(name = "requestTrigger1", methods = GET, authLevel = ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            ExecutionContext context) {
+        return constructGreetingMessage(request, context);
+    }
+
+    /**
+     * curl "{your host}/api/greeting-function-one?name={your_name_here}"
      */
     @FunctionName("greeting-function-two")
-    public HttpResponseMessage run(
-            @HttpTrigger(name = "req", methods = GET, authLevel = ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+    public HttpResponseMessage secondHttpTrigger(
+            @HttpTrigger(name = "requestTrigger1", methods = GET, authLevel = ANONYMOUS) HttpRequestMessage<Optional<String>> request,
             ExecutionContext context) {
+        return constructGreetingMessage(request, context);
+    }
+
+    private HttpResponseMessage constructGreetingMessage(HttpRequestMessage<Optional<String>> request, ExecutionContext context) {
         String name = request.getQueryParameters().get("name");
         context.getLogger().info("Greeting [" + name + "]");
 

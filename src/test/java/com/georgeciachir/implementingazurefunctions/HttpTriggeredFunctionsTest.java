@@ -16,7 +16,7 @@ import static org.mockito.Mockito.*;
 /**
  * Unit test for Function class.
  */
-public class FirstGreetingFunctionTest {
+public class HttpTriggeredFunctionsTest {
     /**
      * Unit test for HttpTriggerJava method.
      */
@@ -45,7 +45,7 @@ public class FirstGreetingFunctionTest {
         doReturn(Logger.getGlobal()).when(context).getLogger();
 
         // Invoke
-        final HttpResponseMessage ret = new FirstGreetingFunction().run(req, context);
+        final HttpResponseMessage ret = new HttpTriggeredFunctions().firstHttpTrigger(req, context);
 
         // Verify
         assertEquals(ret.getStatus(), HttpStatus.OK);
