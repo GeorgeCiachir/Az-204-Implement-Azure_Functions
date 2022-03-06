@@ -8,17 +8,11 @@ import com.microsoft.azure.functions.annotation.FunctionName;
 import com.microsoft.azure.functions.annotation.HttpTrigger;
 
 import java.util.Optional;
-import java.util.logging.Logger;
 
 import static com.microsoft.azure.functions.HttpMethod.GET;
 import static com.microsoft.azure.functions.annotation.AuthorizationLevel.ANONYMOUS;
 
-/**
- * Azure Functions with HTTP Trigger.
- */
 public class FirstGreetingFunction {
-
-    private static final Logger LOG = Logger.getLogger("Function");
 
     /**
      * This function listens at endpoint "/api/greeting-function-one". Two ways to invoke it using "curl" command in bash:
@@ -29,7 +23,7 @@ public class FirstGreetingFunction {
             @HttpTrigger(name = "req", methods = GET, authLevel = ANONYMOUS) HttpRequestMessage<Optional<String>> request,
             ExecutionContext context) {
         String name = request.getQueryParameters().get("name");
-        context.getLogger().info("Logging with the context logger. Greeting [" + name + "]");
+        context.getLogger().info("Greeting [" + name + "]");
 
         if (name == null) {
             return request.createResponseBuilder(HttpStatus.BAD_REQUEST)

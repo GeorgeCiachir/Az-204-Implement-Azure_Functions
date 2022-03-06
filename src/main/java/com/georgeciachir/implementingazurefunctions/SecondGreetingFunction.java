@@ -23,7 +23,7 @@ public class SecondGreetingFunction {
             @HttpTrigger(name = "req", methods = GET, authLevel = ANONYMOUS) HttpRequestMessage<Optional<String>> request,
             ExecutionContext context) {
         String name = request.getQueryParameters().get("name");
-        context.getLogger().info("Logging with the context logger. Greeting [" + name + "]");
+        context.getLogger().info("Greeting [" + name + "]");
 
         if (name == null) {
             return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
