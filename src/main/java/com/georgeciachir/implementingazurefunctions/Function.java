@@ -28,10 +28,9 @@ public class Function {
     public HttpResponseMessage run(
             @HttpTrigger(name = "req", methods = GET, authLevel = ANONYMOUS) HttpRequestMessage<Optional<String>> request,
             ExecutionContext context) {
-        context.getLogger().info("Java HTTP trigger processed a request.");
-        LOG.info("Java HTTP trigger processed a request.");
-
         String name = request.getQueryParameters().get("name");
+        context.getLogger().info("Logging with the context logger. Greeting [{" + name + "}]");
+        LOG.info("Logging with the manually created logger. Greeting [{" + name + "}]");
 
         if (name == null) {
             return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
