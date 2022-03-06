@@ -11,7 +11,7 @@ public class QueueTriggeredFunction {
     /**
      * This function will be invoked when a new message is received at the specified path. The message contents are provided as input to this function.
      */
-    @FunctionName("QueueTriggeredFunction")
+    @FunctionName("queue-triggered-function")
     public void queueTrigger(
             @QueueTrigger(name = "message", queueName = "queue-items", connection = "AzureWebJobsStorage") String message,
             final ExecutionContext context) {
