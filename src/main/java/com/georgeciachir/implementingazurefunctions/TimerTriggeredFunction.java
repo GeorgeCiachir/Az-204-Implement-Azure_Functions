@@ -20,7 +20,8 @@ public class TimerTriggeredFunction {
 
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url("https://greeting-function-test-env.azurewebsites.net/api/greeting-function-one?name=TimerTriggeredFunction")
+                .url("https://greeting-function-test-env.azurewebsites.net/api/http-greeting-function-one?name=TimerTriggeredFunction") //Azure
+//                .url("http://localhost:7071/api/http-greeting-function-one?name=TimerTriggeredFunction") //local
                 .build();
 
         Call call = client.newCall(request);
