@@ -36,7 +36,7 @@ public class BindingExamples {
                     id = "{Query.id}",
                     partitionKey = "{Query.partition}") Optional<String> item,
             @QueueOutput(
-                    name = "queueOutputBingind",
+                    name = "queueOutputBinding",
                     queueName = "queue-items",
                     connection = "AzureWebJobsStorage") OutputBinding<String> message,
             final ExecutionContext context) {
