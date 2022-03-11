@@ -50,7 +50,7 @@ public class BindingExamples {
 
         sendMessage(context, request, item, message);
 
-        return item.map(i -> getFromCosmosDb(request, i))
+        return item.map(i -> createItemResponse(request, i))
                 .orElseGet(() -> notFound(request));
     }
 
@@ -63,7 +63,7 @@ public class BindingExamples {
         message.setValue(queueMessage);
     }
 
-    private HttpResponseMessage getFromCosmosDb(HttpRequestMessage<Optional<String>> request, String item) {
+    private HttpResponseMessage createItemResponse(HttpRequestMessage<Optional<String>> request, String item) {
         return request.createResponseBuilder(HttpStatus.OK)
                 .header("Content-Type", "application/json")
                 .body(item)
