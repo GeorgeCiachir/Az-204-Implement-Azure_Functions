@@ -24,7 +24,7 @@
   - Consumption plan
   - Functions Premium plan
   - App service plan
-- If you run on an App Service plan, you should enable the Always on setting so that your function app runs correctly. 
+- If you run on an App Service plan, you should enable the **`Always on`** setting so that your function app runs correctly. 
 - On an App Service plan, the functions runtime goes idle after a few minutes of inactivity, so only HTTP triggers will "wake up" 
   your functions. 
 - Always on is available only on an App Service plan. On a Consumption plan, the platform activates function apps automatically.
@@ -35,7 +35,7 @@
   but some storage accounts do not support queues and tables
 
 ## Scale Azure Functions
-- Azure Functions uses a component called the scale controller to monitor the rate of events and determine whether to scale out or scale in
+- Azure Functions uses a component called the **`Scale controller`** to monitor the rate of events and determine whether to scale out or scale in
 - The unit of scale for Azure Functions is the function app
 - The number of instances is eventually "scaled in" to zero when no functions are running within a function app
 - Scaling behaviors
@@ -47,8 +47,9 @@
 - very similar to how App Service is deployed
 - can use deployment slots
 - supports multiple trigger types (TimerTrigger, HttpTrigger, BlobTrigger, CosmosDBTrigger, QueueTrigger, EventGridTrigger etc...)
-- multiple triggers ca be defined in the same Java class
-- supports creation and modification of functions, directly in the Azure portal (probably just for interpreted languages)
+- multiple functions (essentially, methods annotated with @Function) can be defined in the same Java class
+- a single trigger is accepted per function
+- supports creation and modification of functions, directly in the Azure portal e.g. NodeJS functions)
 - when creating a blob triggered function, we need to specify the storage name and the blob container to watch (that belongs to that storage and that holds the blobs)
 - similarly, when creating a queue triggered function, we need to specify the storage name and the queue to watch
 
@@ -70,7 +71,7 @@
 - Azurite also creates several configuration files (__azurite_db_blob__.json, __azurite_db_blob_extent__.json, __azurite_db_queue__.json, __azurite_db_queue_extent__.json)
   and corresponding directories, where the storage account data is stored (__blobstorage__, __queuestorage__)
 
-## Durable functions
+## [Durable functions](https://docs.microsoft.com/en-us/learn/modules/implement-durable-functions/2-durable-functions-overview)
 - Great way to create serverless workflows
 - Of course, a work flow can also include sub-orchestration
 - When creating a durable functions (aka durable tasks) flow, there are at least 3 functions that are created:
